@@ -16,6 +16,7 @@ This is a basic event management web app that helps you to easily create and man
 2. Open terminal and cd over to the project directory.
 3. Run "npm install" or "npm i"
 4. Run "nodemon App.js"
+5. Go to http://localhost:3000/login to see your app.
 
 ## CREATE ADMIN USER
 1. Username Must be "ADMIN" (case-sensitive).
