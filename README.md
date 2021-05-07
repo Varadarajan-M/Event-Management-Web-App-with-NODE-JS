@@ -20,4 +20,5 @@ This is a basic event management web app that helps you to easily create and man
 
 ## CREATE ADMIN USER
 1. Username Must be "ADMIN" (case-sensitive).
-2. Email and password can be any of your choice.
+2. Email must be "ADMIN@EVENTS.com" (case-sensitive)
+3. Password can be anything of your choice.
