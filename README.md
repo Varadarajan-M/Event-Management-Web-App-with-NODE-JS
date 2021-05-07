@@ -1,5 +1,5 @@
 # Event-Management-Web-App-with-NODE-JS
-This is a basic event management web app that helps you to easily create and manage events. This can be personalised and used according to the needs of the user.
+This is a basic event management web app that helps you to easily create and manage events. This can be personalized and used according to the needs of the user.
 
 ## PRE REQUISITES
 1. Node JS.
