@@ -1,0 +1,167 @@
+
+<%- include('partials/Admin-Header') %>
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab" id="userevents">
+
+
+  <div class="row">
+    <div class=" col-lg-7 col-md-7 col-sm-12">
+      <h2>My Events</h2>
+      <p> You can now filter out your events and export into these formats Check out!</p>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12">
+      <%if((pending.length)&&(pending.length>0)){%>
+
+      <div id="notif" style="display: none;" class="form-group alert alert-danger alert-dismissible m-2 fade show" role="alert">
+        <strong> You have <%=pending.length%> approval request(s) </strong>
+        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%}%>
+    </div>
+  </div>
+
+
+
+
+
+  
+
+
+
+
+
+<form class="mt-4 mb-4" action="/userevents" method="post">
+<div class="row">
+  <div class="col-lg-2 col-md-2 col-sm-6">
+    <div class="form-group">
+      <label for="startdate"> Start Date*</label>&nbsp
+      <input type="date" id="startdate" class="form-control" name="startdate" required>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-2 col-sm-6">
+    <div class="form-group">
+      <label for="enddate">End Date*</label>&nbsp
+      <input type="date" id="enddate" class="form-control" name="enddate" required>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-2 col-sm-6">
+    <div class="form-group">
+      <label for="eventlevel">Event Level</label>
+      <select  name="eventlevel" class="form-control" id="eventlevel" placeholder="placeholder"  >
+        <option value="" selected disabled>Choose Here</option>
+        <option value="INTERNATIONAL">INTERNATIONAL</option>
+        <option value="NATIONAL">NATIONAL</option>
+        <option value="INTER COLLEGIATE">INTER COLLEGIATE</option>
+        <option value="INTER DEPARTMENT">INTER DEPARTMENT</option>
+        <option value="INTRA DEPARTMENT">INTRA DEPARTMENT</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-2 col-sm-6">
+    <div class="form-group">
+    <label for="eventtype">Event Type</label>
+    <select class="form-control" name="eventtype" id="eventtype">
+    <option value="" selected disabled>Choose Event Type</option>
+    <option value="SEMINAR">SEMINAR</option>
+    <option value="FACULTY DEVELOPMENT PROGRAMME">FACULTY DEVELOPMENT PROGRAMME</option>
+    <option value="WORKSHOP">WORKSHOP</option>
+    <option value="SYMPOSIUM">SYMPOSIUM</option>
+    <option value="CONFERENCE">CONFERENCE</option>
+    <option value="WEBINAR">WEBINAR</option>
+    <option value="TRAINING PROGRAMME">TRAINING PROGRAMME</option>
+    <option value="PERSONALITY DEVELOPMENT PROGRAMME">PERSONALITY DEVELOPMENT PROGRAMME</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm6">
+       <div class="form-group">
+           <label for="userselect">Select User</label>
+           <select name="username" class="form-control">
+               <option value="" disabled selected> Select User</option>
+               <%userDetails.forEach((user)=>{%>
+                 
+                    <option value="<%=user.username%>"><%=user.username%></option>
+                    
+                <%})%>
+
+            </select>
+       </div> 
+    </div>
+
+    
+
+
+</div>
+
+
+<div class="text-center col-lg-12 col-md-12 col-sm-12 m-3">
+  <button type="submit" class="btn btn-sm btn-success">Show Events</button>
+
+
+
+</div>
+
+
+
+
+</form>
+
+
+            <table id="example" class="table table-striped  table-responsive  table-bordered w-100 d-block d-lg-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>SNo</th>
+                            <th>EventName</th>
+                            <th>StartDate</th>
+                            <th>EndDate</th>
+                            <th>OrganizerName</th>
+                            <th>User</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                  
+                            <%userEvents.forEach((i,no)=>{%>
+
+                                <tr >
+                                    <th scope="row"><%=no+1%></th>
+                                    <td class="event"> <%=i.eventname%></td>
+                                    <td><%=i.eventstartdate%></td>
+                                    <td><%=i.eventenddate%></td>
+                                    <td><%=i.eventorganizers%></td>
+                                    <td><%=i.user%></td>
+                                    <td> 
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="View more about <%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm btn-primary" onclick="window.location.href='/ADMIN/viewevent/<%=i.user%>/<%=i._id%>'" type="button" name="button"><i class="fa fa-external-link" ></i>&nbspView more</button>
+                                      
+                        
+                                    </td>
+                                  </tr>
+                          
+                    
+                           <% })%>
+                      
+                    </tbody>
+
+                </table>
+
+
+
+
+</div>
+
+
+
+<%- include('partials/Admin-Footer') %>

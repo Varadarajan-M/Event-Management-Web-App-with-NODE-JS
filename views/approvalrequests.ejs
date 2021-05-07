@@ -1,0 +1,82 @@
+
+<%- include('partials/Admin-Header') %>
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab" id="pendingapprovalsadmin">
+
+
+  <div class="row">
+    <div class=" col-lg-7 col-md-7 col-sm-12">
+      <h2>Approval Requests</h2>
+      <p> Search by any field values to fetch Approval requests easily  :) </p>
+    </div>
+    <%if(msg!=''){%>
+    <div class="col-lg-5 col-md-5 col-sm-12">
+      <div id="notif" style="display: none;" class="form-group alert alert-danger alert-dismissible m-2 fade show" role="alert">
+        <strong><%=msg%></strong>
+        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <%}%>
+  </div>
+
+
+            <table id="example" class="table table-striped  table-responsive  table-bordered w-100 d-block d-lg-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>SNo</th>
+                            <th>EventName</th>
+                            <th>StartDate</th>
+                            <th>EndDate</th>
+                            <th>OrganizerName</th>
+                            <th>User</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                  
+                            <%pendingEvents.forEach((i,no)=>{%>
+
+                                <tr >
+                                    <th scope="row"><%=no+1%></th>
+                                    <td class="event"> <%=i.eventname%></td>
+                                    <td><%=i.eventstartdate%></td>
+                                    <td><%=i.eventenddate%></td>
+                                    <td><%=i.eventorganizers%></td>
+                                    <td><%=i.user%></td>
+                                    <td> 
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="View more about <%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm btn-primary" onclick="window.location.href='/ADMIN/viewevent/<%=i.user%>/<%=i._id%>'" type="button" name="button"><i class="fa fa-external-link" ></i>&nbspView</button>
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="Approve <%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm btn-info" onclick="window.location.href='/ADMIN/Approveevent/<%=i.user%>/<%=i._id%>'" type="button" name="button"><i class="fas fa-thumbs-up"></i>&nbspApprove</button> <br>
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="Inform corrections" style="border-radius:5px" class=" btn btn-sm mt-2 btn-secondary" onclick="window.location.href='/corrections/<%=i.user%>/<%=i.eventname%>/<%=i._id%>'" type="button" name="button"><i class="fas fa-paper-plane"></i>&nbsp Message</button>
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="Deny<%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm mt-2 btn-danger" onclick="window.location.href='/ADMIN/deleteevent/<%=i.user%>/<%=i._id%>'" type="button" name="button"><i class="fas fa-thumbs-down"></i>&nbsp Delete</button>
+                                      
+                        
+                        
+                                    </td>
+                                  </tr>
+                          
+                    
+                           <% })%>
+                      
+                    </tbody>
+
+                </table>
+
+
+
+
+</div>
+
+
+
+<%- include('partials/Admin-Footer') %>

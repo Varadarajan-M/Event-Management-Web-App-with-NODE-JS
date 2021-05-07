@@ -1,0 +1,82 @@
+<%- include('partials/Admin-Header') %>
+
+<div id="addnewuser">
+
+
+  <h2>Add New User</h2>
+  <p> Add,View and reset User details here!</p>
+
+  <%if(msg!=''){%>
+
+    <div class="form-group alert alert-danger alert-dismissible m-2 fade show" role="alert">
+      <strong><%=msg%> </strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+  
+  
+  <%}%>
+
+<form class="mb-4" action="/addnewuser" method="POST">
+
+  <div class="form-group">
+    <label for="Username">Username*</label>
+    <input type="text" class="form-control" name="username" id="Username" placeholder="Enter Username"  required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email*</label>
+    <input type="email" class="form-control" name="email" id="Email" placeholder="Enter Email"  required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Password*</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="New Password" required>
+    <small id="passHelp" class="form-text text-muted">We suggest to create a strong password with a combination of numbers , special characters , uppercase and lowercase letters</small>
+  </div>
+  
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit"   class="btn btn-primary"><i class="fa fa fa-user-plus"></i> Add User</button>
+
+</form>
+
+
+
+<table id="example" class="table table-striped mt-4 table-responsive  table-bordered w-100 d-block d-lg-table" style="width:100%">
+    <thead>
+        <tr>
+            <th>SNo</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+            <%userList.forEach((i,no)=>{%>
+
+                <tr >
+                    <th scope="row"><%=no+1%></th>
+                    <td> <%=i.username%></td>
+                    <td><%=i.email%></td>
+                    <td> 
+                      <button data-toggle="tooltip" data-placement="bottom"  title="Reset <%=i.username%>'s Password " style="border-radius:5px" class=" btn btn-sm btn-primary" onclick="window.location.href='/password-reset/<%=i.username%>/<%=i._id%>'" type="button" name="button"><i class="fas fa-unlock-alt"></i></button>
+                      <button data-toggle="tooltip" data-placement="bottom"  title="Delete All records of <%=i.username%> " style="border-radius:5px" class=" btn btn-sm btn-danger" onclick="window.location.href='/delete-user/<%=i.username%>/<%=i._id%>'" type="button" name="button"><i class="fas fa-trash"></i></button> 
+                     
+                    </td>
+                  </tr>
+          
+    
+           <% })%>
+      
+    </tbody>
+
+</table>
+
+
+
+</div>
+<%- include('partials/Admin-Footer') %>

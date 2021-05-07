@@ -1,0 +1,151 @@
+<%- include('partials/header') %>
+<%let msg=''%>
+
+                    
+<div id="updateevent">
+
+  <h2>Update <%=name%></h2>
+  <p><strong> Hey <%=user%> !  </strong> Just wanted to let you know that all the starred* fields are required :) </p>
+
+  <%if(msg!=''){%>
+
+    <div class="form-group alert alert-primary alert-dismissible m-2 fade show" role="alert">
+      <strong><%=msg%> </strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+  
+  
+  <%}%>
+
+<form action="/updateevent" method="post" enctype="multipart/form-data">
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="form-group">
+      <label for="eventname">Event Name*</label>
+      <input type="text" value="<%=name%>" name="eventname" class="form-control" id="eventname" placeholder="Enter event name" required>
+
+    </div>
+    <div class="form-group">
+      <label for="eventlevel">Event Level*</label>
+      <select  name="eventlevel" class="form-control" id="eventlevel" placeholder="placeholder" required >
+        <option value="" selected disabled>Choose Here</option>
+        <option value="INTERNATIONAL">INTERNATIONAL</option>
+        <option value="NATIONAL">NATIONAL</option>
+        <option value="INTER COLLEGIATE">INTER COLLEGIATE</option>
+        <option value="INTER DEPARTMENT">INTER DEPARTMENT</option>
+        <option value="INTRA DEPARTMENT">INTRA DEPARTMENT</option>
+      </select>
+    </div>
+
+
+<div class="form-group">
+  <label for="eventtype">Event Type*</label>
+  <select class="form-control" name="eventtype" id="eventtype" required>
+    <option value="" selected disabled>Choose Event Type</option>
+    <option value="SEMINAR">SEMINAR</option>
+    <option value="FACULTY DEVELOPMENT PROGRAMME">FACULTY DEVELOPMENT PROGRAMME</option>
+    <option value="WORKSHOP">WORKSHOP</option>
+    <option value="SYMPOSIUM">SYMPOSIUM</option>
+    <option value="CONFERENCE">CONFERENCE</option>
+    <option value="WEBINAR">WEBINAR</option>
+    <option value="TRAINING PROGRAMME">TRAINING PROGRAMME</option>
+    <option value="PERSONALITY DEVELOPMENT PROGRAMME">PERSONALITY DEVELOPMENT PROGRAMME</option>
+
+
+
+  </select>
+</div>
+<div class="form-group">
+  <label for="startdate">Start Date*</label>
+  <input name="startdate" value="<%=startdate%>" type="date" class="date form-control" id="startdate" required>
+
+</div>
+<div class="form-group">
+  <label for="enddate">End Date*</label>
+  <input name="enddate" value="<%=enddate%>" type="date" class="date form-control" id="enddate" required>
+
+</div>
+<div class="form-group">
+  <label for="eventorganizers">Event Organizers*</label>
+  <input name="organizers" value="<%=organizers%>" type="text" class="form-control" id="eventorganizers" required>
+</div>
+
+<div class="form-group">
+  <label for="eventdesc">Event Description</label>
+  <textarea name="desc" placeholder="Enter Event Description" class="form-control" rows="8" cols="80" id="eventdesc" > <%=desc%> </textarea>
+</div>
+
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12">
+  <div class="form-group">
+    <label for="eventposter">Event Poster</label>
+    <input name="filePoster" data-toggle="tooltip" data-placement="bottom" title="Leave this field empty if you don't want to change existing poster" type="file" class="form-control" id="eventposter" accept=".png,.jpg,.jpeg">
+  </div>
+
+  
+
+
+  <div class="form-group">
+    <label for="eventreport">Event Report</label>
+    <input name="fileReport" data-toggle="tooltip" data-placement="bottom" title="Leave this field empty if you don't want to change existing report"   type="file" class="form-control" id="eventreport" accept=".doc,.dox,.pdf">
+  </div>
+
+<div class="form-group">
+  <label for="eventorganizationname">Organization Name</label>
+  <input  name="orgname"  value="<%=orgname%>" type="text" class="form-control" id="eventorganizationname">
+</div>
+
+<div class="form-group">
+  <label for="exteventorganizers">External Organizers</label>
+  <input name="extorganizers"  value="<%=extorg%>"  type="text" class="form-control" id="exteventorganizers">
+</div>
+
+<div class="form-group">
+  <label for="speakertype">Speaker Type</label>
+
+  <select name="speakertype" class="form-control" id="speakertype">
+    <option value="" selected disabled>Choose Here  </option>
+    <option value="External">External</option>
+    <option value="Internal">Internal</option>
+  </select>
+
+</div>
+
+<div class="form-group">
+  <label for="speakername">Speaker Name</label>
+  <input name="speakername"  value="<%=speakername%>"  type="text" class="form-control" id="speakername">
+</div>
+
+<div class="form-group">
+  <label for="chief">Chief Guest Name</label>
+  <input name="chiefguest" value="<%=chief%>" type="text" class="form-control" id="chief">
+</div>
+
+<div class="form-group">
+  <label for="chiefdesn">Chief Guest Designation</label>
+  <input name="chiefguestdesn" value="<%=chiefdesn%>"  type="text" class="form-control" id="chiefdesn" >
+</div>
+
+
+
+</div>
+<div class="col-12">
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1">I've Checked Everything*</label>
+  </div>
+</div>
+<div class="col-12 text-center">
+  <button  type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top"  title="Changes needs to be approved by admin Kindly Check Event status in Pending Approvals " >Update Event</button>
+
+</div>
+
+
+
+</form>
+</div>
+<%- include('partials/footer') %>

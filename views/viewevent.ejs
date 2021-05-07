@@ -1,0 +1,153 @@
+
+
+<%- include('partials/header') %>
+
+<div id="eventdetails">
+    
+    
+     <h2>Details about <%=name%> </h2>
+     <br>
+      
+     <div class="row">
+        <div class="col-6">
+      
+      
+              <div class="name row">
+                <div class="col">
+                <h4>Event Name</h4>
+                <p style="font-size: 1.2em;color:#525254" id="name"><%=name%></p>
+                </div>
+      
+              </div>
+              <div class="sd row">
+                <div class="col">
+               <h4>Start Date</h4>
+                <p style="font-size: 1.2em;color:#525254" id="startdate">
+                <%=startdate%></p>
+                </div>
+              </div>
+              <div class="ed row">
+                <div class="col">
+      
+                   <h4>End Date</h4>
+                          <p style="font-size: 1.2em;color:#525254" id="enddate"><%=enddate%></p>
+                </div>
+              </div>
+              <div class="type row">
+                <div class="col">
+      
+                   <h4>Type</h4>
+                          <p style="font-size: 1.2em;color:#525254"  id="type"><%=type%></p>
+                </div>
+              </div>
+              <div class="level row">
+                <div class="col">
+      
+                   <h4>Level</h4>
+                    <p style="font-size: 1.2em;color:#525254" id="level"><%=level%></p>
+      
+                </div>
+              </div>
+      
+      
+                      <div class="eventposter row">
+                        <div class="col">
+      
+                           <h4>Event Poster</h4>
+        
+                          <button id="eventposter" title="View Event Poster" class="btn btn-primary" onclick="window.location.href='/uploads/<%=eventposter%>'" type="button" name="button">View Event Poster</button>
+                          
+                        
+                        </div>
+
+                      </div>
+      
+                      <div class="eventreport row">
+                        <div class="col">
+      
+                           <h4>Event Report</h4>
+              
+                            <button id="eventreport"title="View Event Report"  class="btn btn-primary" onclick="window.location.href='/uploads/<%=eventreport%>'" type="button" name="button">Download Event Report</button>
+                        </div>
+                      </div>
+      
+      
+            </div>
+      
+      <div class="col-6">
+      
+      
+      
+      
+              <div class="row extorg">
+                <div class="col">
+      
+                   <h4>External Organization</h4>
+                    <p style="font-size: 1.2em;color:#525254" id="extorg"><%=extorg%></p>
+      
+                </div>
+              </div>
+              <div class="row sp-type">
+                <div class="col">
+      
+                   <h4>Speaker Type</h4>
+                    <p style="font-size: 1.2em;color:#525254" id="speakertype"><%=speakertype%></p>
+      
+                </div>
+              </div>
+              <div class="row sp-name">
+                <div class="col">
+      
+                   <h4>Speaker Name</h4>
+                    <p style="font-size: 1.2em;color:#525254" id="speakername"><%=speakername%></p>
+      
+                </div>
+              </div>
+              <div class="row chief">
+                <div class="col">
+      
+                   <h4> Chief Guest</h4>
+                    <p style="font-size: 1.2em;color:#525254" id="chief"><%=chief%></p>
+      
+                </div>
+              </div>
+              <div class="chiefdesn row">
+                <div class="col">
+      
+                   <h4> Chief Guest Designation</h4>
+                    <p style="font-size: 1.2em;color:#525254" id="chiefdesn"><%=chiefdesn%></p>
+      
+                </div>
+              </div>
+              <div class="org-name row">
+                <div class="col">
+      
+                   <h4>Organization Name</h4>
+                  <p style="font-size: 1.2em;color:#525254" id="orgname"><%=orgname%></p>
+                </div>
+              </div>
+      
+              <div class="organizers row">
+                <div class="col">
+      
+                   <h4>Organizers</h4>
+                      <p style="font-size: 1.2em;color:#525254" id="organizers"><%=organizers%></p>
+      
+                </div>
+              </div>
+      
+      
+      
+      </div>
+      </div>
+      <div class="desc row">
+        <div class=" col-12">
+      
+         <h4>Event Description</h4>
+                  <p style="font-size: 1.2em;color:#525254" id="desc"><%=desc%></p>
+      
+        </div>
+      </div>
+     
+</div>
+<%- include('partials/footer') %>

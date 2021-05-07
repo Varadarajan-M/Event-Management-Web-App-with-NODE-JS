@@ -1,0 +1,220 @@
+
+          </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+          $('#notif').fadeTo(1000, 1);
+
+          $('#example').DataTable({
+             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+              dom: 'lBfrtip',
+              "searching": true,
+              "paging": true,
+              "order": [[ 0, "asc" ]],
+              "ordering": true,
+              "columnDefs": [{
+              "targets": [3], /* column index */
+              "orderable": false
+          },
+          {
+            "targets": [ 1 ],
+            "visible": true,
+            "searchable": true
+          }],
+          buttons: [
+                  'copy', 'csv', 'excel', 'pdf', 'print','colvis'
+              ],
+        });
+
+
+        $('#example1').DataTable({
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            dom: 'lBfrtip',
+            "searching": true,
+            "paging": true,
+            "order": [[ 0, "asc" ]],
+            "ordering": true,
+            "columnDefs": [{
+            "targets": [3], /* column index */
+            "orderable": false
+        },
+        {
+          "targets": [ 1 ],
+          "visible": true,
+          "searchable": true
+        }],
+        buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print','colvis'
+            ],
+      });
+
+
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+
+        $('.inner-content').on( 'mousewheel DOMMouseScroll', function (e) {
+
+  var e0 = e.originalEvent;
+  var delta = e0.wheelDelta || -e0.detail;
+
+  this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+  e.preventDefault();
+});
+
+   $("#Homecontent").mouseover(function(){
+  $("#home").addClass("active_content")
+
+});
+
+$("#Homecontent").mouseout(function(){
+$("#home").removeClass("active_content")
+
+});
+
+$("#eventdetails").mouseover(function(){
+  $("#home").addClass("active_content")
+
+});
+
+$("#eventdetails").mouseout(function(){
+$("#home").removeClass("active_content")
+
+});
+
+
+$("#pending-approvals").mouseover(function(){
+$("#home").addClass("active_content")
+
+});
+
+$("#pending-approvals").mouseout(function(){
+$("#home").removeClass("active_content")
+
+});
+
+$("#Newevent").mouseover(function(){
+$("#new-event").addClass("active_content")
+
+});
+
+$("#Newevent").mouseout(function(){
+$("#new-event").removeClass("active_content")
+
+});
+
+$("#Messages").mouseover(function(){
+$("#messages").addClass("active_content")
+
+});
+
+$("#Messages").mouseout(function(){
+$("#messages").removeClass("active_content")
+
+});
+
+
+$("#Changepassword").mouseover(function(){
+$("#change-password").addClass("active_content")
+
+});
+
+$("#Changepassword").mouseout(function(){
+$("#change-password").removeClass("active_content")
+
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+
+//
+if($("#chief").html()=="")
+  {
+    $(".chief").hide();
+  }
+  if($("#chiefdesn").html()=="")
+  {
+    $(".chiefdesn").hide();
+  }
+  if($("#desc").html()=="")
+  {
+    $(".desc").hide();
+  }
+  if($("#speakertype").html()=="")
+  {
+    $(".sp-type").hide();
+  }
+  if($("#speakername").html()=="")
+  {
+    $(".sp-name").hide();
+  }
+  if($("#extorg").html()=="")
+  {
+    $(".extorg").hide();
+  }
+  if($("#organizers").html()=="")
+  {
+    $(".organizers").hide();
+  }
+  if($("#level").html()=="")
+  {
+    $(".level").hide();
+  }
+  if($("#type").html()=="")
+  {
+    $(".type").hide();
+  }
+  if($("#enddate").html()=="")
+  {
+    $(".ed").hide();
+  }
+  if($("#orgname").html()=="")
+  {
+    $(".org-name").hide();
+  }
+
+  if($("#eventreport").html()=="")
+  {
+    $(".eventreport").hide();
+  }
+
+  if($("#eventposter").html()=="")
+  {
+    $(".eventposter").hide();
+  }
+
+
+  if($("#startdate").html()=="")
+  {
+    $(".sd").hide();
+  }
+  if($("#name").html()=="")
+  {
+    $(".name").hide();
+  }
+
+//
+
+
+
+    </script>
+</body>
+
+</html>

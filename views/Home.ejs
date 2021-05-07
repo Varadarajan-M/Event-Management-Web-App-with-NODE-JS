@@ -1,0 +1,201 @@
+
+<%- include('partials/header') %>
+
+<% let msg=''%>
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#Homecontent" role="tab" aria-controls="pills-home" aria-selected="true">My Events</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pending-approvals" role="tab" aria-controls="pills-profile" aria-selected="false">Pending Approvals &nbsp<span class="badge badge-notification badge-success"><%=pendingEvents.length%></span></a>
+
+  </li>
+
+</ul>
+<div class="tab-content" id="pills-tabContent">
+
+
+
+
+<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab" id="Homecontent">
+
+
+
+<div class="row">
+  <div class=" col-lg-8 col-md-8 col-sm-12">
+    <h2>My Events</h2>
+    <p><strong> Hey <%=user%> ! </strong> You can now filter out your events and export into these formats Check out!</p>
+        
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <%if((messages.length)&&(messages.length>0)){%>
+
+    <div id="notif" style="display: none;" class="form-group alert alert-danger alert-dismissible m-2 fade show" role="alert">
+      <strong> You have <%=messages.length%> Message(s) </strong>
+      
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <%}%>
+  </div>
+</div>
+
+
+<form class="mt-4 mb-4" action="/home" method="post">
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-6">
+    <div class="form-group">
+      <label for="startdate"> Start Date*</label>&nbsp
+      <input type="date" id="startdate" class="form-control" name="startdate" required>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-6">
+    <div class="form-group">
+      <label for="enddate">End Date*</label>&nbsp
+      <input type="date" id="enddate" class="form-control" name="enddate" required>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-6">
+    <div class="form-group">
+      <label for="eventlevel">Event Level</label>
+      <select  name="eventlevel" class="form-control" id="eventlevel" placeholder="placeholder"  >
+        <option value="" selected disabled>Choose Here</option>
+        <option value="INTERNATIONAL">INTERNATIONAL</option>
+        <option value="NATIONAL">NATIONAL</option>
+        <option value="INTER COLLEGIATE">INTER COLLEGIATE</option>
+        <option value="INTER DEPARTMENT">INTER DEPARTMENT</option>
+        <option value="INTRA DEPARTMENT">INTRA DEPARTMENT</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-6">
+    <div class="form-group">
+    <label for="eventtype">Event Type</label>
+    <select class="form-control" name="eventtype" id="eventtype">
+    <option value="" selected disabled>Choose Event Type</option>
+    <option value="SEMINAR">SEMINAR</option>
+    <option value="FACULTY DEVELOPMENT PROGRAMME">FACULTY DEVELOPMENT PROGRAMME</option>
+    <option value="WORKSHOP">WORKSHOP</option>
+    <option value="SYMPOSIUM">SYMPOSIUM</option>
+    <option value="CONFERENCE">CONFERENCE</option>
+    <option value="WEBINAR">WEBINAR</option>
+    <option value="TRAINING PROGRAMME">TRAINING PROGRAMME</option>
+    <option value="PERSONALITY DEVELOPMENT PROGRAMME">PERSONALITY DEVELOPMENT PROGRAMME</option>
+
+
+
+    </select>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="text-center col-lg-12 col-md-12 col-sm-12 m-3">
+  <button type="submit" class="btn btn-sm btn-success">Show Events</button>
+
+
+
+</div>
+
+
+
+
+</form>
+
+
+            <table id="example" class="table table-striped  table-responsive  table-bordered w-100 d-block d-lg-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>SNo</th>
+                            <th>EventName</th>
+                            <th>StartDate</th>
+                            <th>EndDate</th>
+                            <th>OrganizerName</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                  
+                            <%myEvents.forEach((i,no)=>{%>
+
+                                <tr >
+                                    <th scope="row"><%=no+1%></th>
+                                    <td class="event"> <%=i.eventname%></td>
+                                    <td><%=i.eventstartdate%></td>
+                                    <td><%=i.eventenddate%></td>
+                                    <td><%=i.eventorganizers%></td>
+                                    <td> 
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="View more about <%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm btn-primary" onclick="window.location.href='/users/<%=user%>/home/posts/viewevent/<%=i._id%>'" type="button" name="button"><i class="fa fa-external-link" ></i></button>
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="Update <%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm btn-secondary" onclick="window.location.href='/users/<%=user%>/home/posts/updateevent/<%=i._id%>'" type="button" name="button"> <i class="fa fa-pencil-square-o"></i> </button>
+                                      <button data-toggle="tooltip" data-placement="bottom"  title="Delete <%=i.eventname%> " style="border-radius:5px" class="btn  btn-sm btn-danger" onclick="function deletepost(){confirm('Are you sure!')?window.location.href='/users/<%=user%>/home/posts/deleteevent/<%=i._id%>':console.log(0)};deletepost()" type="button" name="button"><i class="fa fa-trash" ></i></button>
+                        
+                                    </td>
+                                  </tr>
+                          
+                    
+                           <% })%>
+                      
+                    </tbody>
+
+                </table>
+
+
+
+
+</div>
+
+<div class="tab-pane fade" role="tabpanel" aria-labelledby="pills-profile-tab" id="pending-approvals">
+
+  <h2>Pending Approvals</h2>
+  <p><strong> Hey <%=user%> ! </strong> View Details about your events that are still not approved by the Administrator here </p>
+
+  <table id="example1" class="table mt-3 table-striped  table-responsive  table-bordered w-100 d-block d-lg-table" style="width:100%">
+    <thead>
+        <tr>
+            <th>SNo</th>
+            <th>EventName</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+            <th>OrganizerName</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+  
+        <%pendingEvents.forEach((i,no)=>{%>
+
+            <tr >
+                <th scope="row"><%=no+1%></th>
+                <td class="event"> <%=i.eventname%></td>
+                <td><%=i.eventstartdate%></td>
+                <td><%=i.eventenddate%></td>
+                <td><%=i.eventorganizers%></td>
+                <td>
+                  <button data-toggle="tooltip" data-placement="bottom"  title="Update <%=i.eventname%> " style="border-radius:5px" class=" btn btn-sm btn-secondary" onclick="window.location.href='/users/<%=user%>/home/posts/updateevent/<%=i._id%>'" type="button" name="button"> <i class="fa fa-pencil-square-o"></i> </button>
+                  <button data-toggle="tooltip" data-placement="bottom"  title="Delete <%=i.eventname%> " style="border-radius:5px" class="btn  btn-sm btn-danger" onclick="function deletepost(){confirm('Are you sure!')?window.location.href='/users/<%=user%>/home/posts/deleteevent/<%=i._id%>':console.log(0)};deletepost()" type="button" name="button"><i class="fa fa-trash" ></i></button>
+      
+                </td>
+              </tr>
+      
+
+       <% })%>
+         
+
+
+          </tbody>
+
+      </table>
+
+
+</div>
+</div>
+<%- include('partials/footer') %>
